@@ -14,7 +14,7 @@
     "test": "npm run lint && npm run markdown && nyc --babel --reporter=text ava src/__tests__"
   },
   "devDependencies": {
-    "ava": "^0.10.0",
+    "ava": "^0.11.0",
     "babel-cli": "^6.4.0",
     "babel-core": "^6.4.0",
     "babel-plugin-add-module-exports": "^0.1.3-alpha",
