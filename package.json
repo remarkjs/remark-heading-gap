@@ -8,10 +8,10 @@
     "dist"
   ],
   "scripts": {
-    "lint": "eslint src",
+    "pretest": "eslint src",
     "markdown": "remark *.md --quiet",
-    "prepublish": "de dist && BABEL_ENV=publish babel src --out-dir dist --ignore /__tests__/",
-    "test": "npm run lint && npm run markdown && nyc --babel --reporter=text ava src/__tests__"
+    "prepublish": "del-cli dist && BABEL_ENV=publish babel src --out-dir dist --ignore /__tests__/",
+    "test": "npm run markdown && nyc --babel --reporter=text ava src/__tests__"
   },
   "devDependencies": {
     "ava": "^0.11.0",
