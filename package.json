@@ -8,10 +8,10 @@
     "dist"
   ],
   "scripts": {
-    "lint": "eslint src",
+    "pretest": "eslint src",
     "markdown": "remark *.md --quiet",
-    "prepublish": "de dist && BABEL_ENV=publish babel src --out-dir dist --ignore /__tests__/",
-    "test": "npm run lint && npm run markdown && nyc --babel --reporter=text ava src/__tests__"
+    "prepublish": "del-cli dist && BABEL_ENV=publish babel src --out-dir dist --ignore /__tests__/",
+    "test": "npm run markdown && nyc --babel --reporter=text ava src/__tests__"
   },
   "devDependencies": {
     "ava": "^0.11.0",
@@ -22,7 +22,7 @@
     "babel-preset-es2015-loose": "^7.0.0",
     "babel-preset-stage-0": "^6.3.13",
     "coveralls": "^2.11.6",
-    "del-cli": "^0.1.2",
+    "del-cli": "^0.2.0",
     "eslint": "^1.10.3",
     "nyc": "^5.5.0",
     "remark": "^3.2.2",
