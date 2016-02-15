@@ -23,7 +23,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "coveralls": "^2.11.6",
     "del-cli": "^0.2.0",
-    "eslint": "^1.10.3",
+    "eslint": "^2.1.0",
     "nyc": "^5.5.0",
     "remark": "^3.2.2",
     "remark-usage": "^2.1.0"
