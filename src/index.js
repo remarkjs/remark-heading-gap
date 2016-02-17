@@ -1,5 +1,6 @@
 export default function (remark, opts) {
-    const Compiler = remark.Compiler;
+    const {visitors} = remark.Compiler.prototype;
+    const {heading} = visitors;
     
     const headings = {
         1: {before: '',   after: ''},
@@ -10,16 +11,12 @@ export default function (remark, opts) {
         6: {before: '',   after: ''},
         ...opts
     };
-
-    class HeadingGapCompiler extends Compiler {
-        heading (node) {
-            let gap = headings[node.depth];
-            if (gap && gap.before || gap.after) {
-                return gap.before + super.heading(node) + gap.after;
-            }
-            return super.heading(node);
+    
+    visitors.heading = function (node) {
+        let gap = headings[node.depth];
+        if (gap && gap.before || gap.after) {
+            return gap.before + heading.call(this, node) + gap.after;
         }
-    }
-
-    remark.Compiler = HeadingGapCompiler;
-};
+        return heading.call(this, node);
+    };
+}
