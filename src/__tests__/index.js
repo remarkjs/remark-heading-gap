@@ -19,6 +19,6 @@ Object.keys(specs).forEach(name => {
     const spec = specs[name];
     ava(name, t => {
         const result = remark.use(plugin).process(spec.fixture);
-        t.same(result, spec.expected);
+        t.deepEqual(result, spec.expected);
     });
 });
