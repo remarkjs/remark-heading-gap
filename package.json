@@ -26,7 +26,7 @@
     "eslint": "^2.1.0",
     "eslint-config-cssnano": "^2.0.0",
     "nyc": "^6.0.0",
-    "remark": "^4.1.0",
+    "remark": "^5.0.0",
     "remark-usage": "^3.0.0"
   },
   "keywords": [
