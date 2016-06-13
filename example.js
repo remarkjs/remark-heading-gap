@@ -3,7 +3,7 @@ var gap = require('./dist/index.js');
 
 var markdown = '# remark-heading-gap\n\n## Example\n\n## API\n\n### remark.use(gap, [options])\n\n## Contributing';
 
-var result = remark.use(gap).process(markdown);
+var result = remark().use(gap).process(markdown);
 
 // Output:
-console.log('md', result);
+console.log('md', result.contents);
