@@ -1,7 +1,7 @@
 export default function (remark, opts) {
     const {visitors} = remark.Compiler.prototype;
     const {heading} = visitors;
-    
+
     const headings = {
         1: {before: '',   after: ''},
         2: {before: '\n', after: ''},
@@ -9,11 +9,11 @@ export default function (remark, opts) {
         4: {before: '',   after: ''},
         5: {before: '',   after: ''},
         6: {before: '',   after: ''},
-        ...opts
+        ...opts,
     };
-    
+
     visitors.heading = function (node) {
-        let gap = headings[node.depth];
+        const gap = headings[node.depth];
         if (gap && gap.before || gap.after) {
             return gap.before + heading.call(this, node) + gap.after;
         }
