@@ -29,7 +29,7 @@
     "eslint-config-cssnano": "^3.0.0",
     "eslint-plugin-babel": "^3.3.0",
     "eslint-plugin-import": "^1.10.2",
-    "nyc": "^7.0.0",
+    "nyc": "^8.1.0",
     "remark": "^5.0.1",
     "remark-cli": "^1.0.0",
     "remark-usage": "^3.0.0"
