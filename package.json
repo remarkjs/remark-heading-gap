@@ -9,10 +9,9 @@
   ],
   "scripts": {
     "pretest": "eslint src",
-    "markdown": "remark *.md --quiet",
     "prepublish": "del-cli dist && BABEL_ENV=publish babel src --out-dir dist --ignore /__tests__/",
-    "test": "npm run prepublish && npm run markdown && nyc ava src/__tests__",
-    "test-012": "npm run prepublish && npm run markdown && nyc ava src/__tests__"
+    "test": "npm run prepublish && nyc ava src/__tests__",
+    "test-012": "npm run prepublish && nyc ava src/__tests__"
   },
   "devDependencies": {
     "ava": "^0.16.0",
@@ -30,8 +29,7 @@
     "eslint-plugin-babel": "^3.3.0",
     "eslint-plugin-import": "^1.10.2",
     "nyc": "^8.0.0",
-    "remark": "^5.0.1",
-    "remark-cli": "^2.0.0",
+    "remark": "^6.0.0",
     "remark-usage": "^4.0.1"
   },
   "keywords": [
@@ -51,20 +49,6 @@
     "url": "http://beneb.info"
   },
   "repository": "ben-eb/remark-heading-gap",
-  "remarkConfig": {
-    "output": true,
-    "plugins": {
-      "./dist/index.js": {},
-      "usage": {
-        "heading": "example"
-      }
-    },
-    "settings": {
-      "bullet": "*",
-      "fences": true,
-      "listItemIndent": "1"
-    }
-  },
   "ava": {
     "require": "babel-register"
   },
