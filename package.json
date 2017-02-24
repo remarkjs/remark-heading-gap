@@ -15,7 +15,7 @@
     "test-012": "npm run prepublish && npm run markdown && nyc ava src/__tests__"
   },
   "devDependencies": {
-    "ava": "^0.17.0",
+    "ava": "^0.18.0",
     "babel-cli": "^6.4.5",
     "babel-core": "^6.4.5",
     "babel-plugin-add-module-exports": "^0.2.0",
@@ -30,9 +30,9 @@
     "eslint-plugin-babel": "^3.3.0",
     "eslint-plugin-import": "^2.0.1",
     "nyc": "^10.0.0",
-    "remark": "^6.0.0",
-    "remark-cli": "^2.0.0",
-    "remark-usage": "^4.0.1"
+    "remark": "^7.0.0",
+    "remark-cli": "^3.0.0",
+    "remark-usage": "^5.0.0"
   },
   "keywords": [
     "heading",

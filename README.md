@@ -18,7 +18,7 @@ npm install remark-heading-gap
 var remark = require('remark');
 var gap = require('remark-heading-gap');
 var markdown = '# remark-heading-gap\n\n## Example\n\n## API\n\n### remark.use(gap, [options])\n\n## Contributing';
-var result = remark().use(gap).process(markdown);
+var result = remark().use(gap).processSync(markdown);
 ```
 
 Output:

@@ -1,5 +1,5 @@
-export default function (remark, opts) {
-    const {visitors} = remark.Compiler.prototype;
+export default function (opts) {
+    const {visitors} = this.Compiler.prototype;
     const {heading} = visitors;
 
     const headings = {

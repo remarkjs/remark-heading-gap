@@ -18,7 +18,7 @@ const specs = directory(base).reduce((tests, contents) => {
 Object.keys(specs).forEach(name => {
     const spec = specs[name];
     ava(name, t => {
-        const {contents} = remark().use(plugin).process(spec.fixture);
+        const {contents} = remark().use(plugin).processSync(spec.fixture);
         t.deepEqual(contents, spec.expected);
     });
 });
