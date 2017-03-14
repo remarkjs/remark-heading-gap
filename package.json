@@ -1,6 +1,6 @@
 {
   "name": "remark-heading-gap",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Adjust the gap between headings.",
   "main": "dist/index.js",
   "files": [
