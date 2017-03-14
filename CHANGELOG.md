@@ -1,3 +1,8 @@
+# 3.0.0
+
+* Drops support for Node 0.12.
+* Upgraded to remark 7.x (thanks to @wooorm).
+
 # 2.0.1
 
 * Upgraded to remark 5.x, this module will work the same using either version.
