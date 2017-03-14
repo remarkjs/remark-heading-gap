@@ -11,8 +11,10 @@
     "pretest": "eslint src",
     "markdown": "remark *.md --quiet",
     "prepublish": "del-cli dist && BABEL_ENV=publish babel src --out-dir dist --ignore /__tests__/",
-    "test": "npm run prepublish && npm run markdown && nyc ava src/__tests__",
-    "test-012": "npm run prepublish && npm run markdown && nyc ava src/__tests__"
+    "test": "npm run prepublish && npm run markdown && nyc ava src/__tests__"
+  },
+  "engines": {
+    "node": ">=4"
   },
   "devDependencies": {
     "ava": "^0.18.0",
