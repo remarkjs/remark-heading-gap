@@ -1,9 +1,16 @@
+// Say our script, `example.js`, looks as follows:
+var fs = require('fs');
 var remark = require('remark');
 var gap = require('./dist/index.js');
 
-var markdown = '# remark-heading-gap\n\n## Example\n\n## API\n\n### remark.use(gap, [options])\n\n## Contributing';
+var markdown = fs.readFileSync('example.md')
 
 var result = remark().use(gap).processSync(markdown);
 
-// Output:
-console.log('md', result.contents);
+console.log(result);
+
+// And our markdown markdown file, `example.md`:
+console.log('markdown', String(markdown));
+
+// Now, running `node example` yields:
+console.log('markdown', String(result));

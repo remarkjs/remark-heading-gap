@@ -14,16 +14,34 @@ npm install remark-heading-gap
 
 ## Example
 
+Say our script, `example.js`, looks as follows:
+
 ```javascript
+var fs = require('fs');
 var remark = require('remark');
 var gap = require('remark-heading-gap');
-var markdown = '# remark-heading-gap\n\n## Example\n\n## API\n\n### remark.use(gap, [options])\n\n## Contributing';
+var markdown = fs.readFileSync('example.md')
 var result = remark().use(gap).processSync(markdown);
+console.log(result);
 ```
 
-Output:
+And our markdown markdown file, `example.md`:
 
-```md
+```markdown
+# remark-heading-gap
+
+## Example
+
+## API
+
+### remark.use(gap, [options])
+
+## Contributing
+```
+
+Now, running `node example` yields:
+
+```markdown
 # remark-heading-gap
 
 
