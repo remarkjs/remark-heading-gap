@@ -17,7 +17,7 @@
     "node": ">=4"
   },
   "devDependencies": {
-    "ava": "^0.18.0",
+    "ava": "^0.19.0",
     "babel-cli": "^6.4.5",
     "babel-core": "^6.4.5",
     "babel-plugin-add-module-exports": "^0.2.0",
@@ -26,12 +26,12 @@
     "babel-preset-stage-0": "^6.3.13",
     "babel-register": "^6.9.0",
     "coveralls": "^2.11.6",
-    "del-cli": "^0.2.0",
+    "del-cli": "^1.0.0",
     "eslint": "^3.0.0",
     "eslint-config-cssnano": "^3.0.0",
     "eslint-plugin-babel": "^3.3.0",
     "eslint-plugin-import": "^2.0.1",
-    "nyc": "^10.0.0",
+    "nyc": "^11.0.0",
     "remark": "^7.0.0",
     "remark-cli": "^3.0.0",
     "remark-usage": "^5.0.0"
