@@ -1,22 +1,19 @@
-export default function (opts) {
-    const {visitors} = this.Compiler.prototype;
-    const {heading} = visitors;
+const blank = '\n'
 
-    const headings = {
-        1: {before: '',   after: ''},
-        2: {before: '\n', after: ''},
-        3: {before: '',   after: ''},
-        4: {before: '',   after: ''},
-        5: {before: '',   after: ''},
-        6: {before: '',   after: ''},
-        ...opts,
-    };
+const defaults = {
+  2: {before: blank, after: ''}
+}
 
-    visitors.heading = function (node) {
-        const gap = headings[node.depth];
-        if (gap && gap.before || gap.after) {
-            return gap.before + heading.call(this, node) + gap.after;
-        }
-        return heading.call(this, node);
-    };
+export default function(options) {
+  const gaps = {...defaults, ...options}
+  const {visitors} = this.Compiler.prototype
+  const {heading} = visitors
+
+  visitors.heading = headingGap
+
+  function headingGap(node) {
+    const gap = gaps[node.depth] || {}
+
+    return (gap.before || '') + heading.call(this, node) + (gap.after || '')
+  }
 }
