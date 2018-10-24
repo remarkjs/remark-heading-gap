@@ -23,7 +23,7 @@ Say we have a markdown file, `example.md`, that looks as follows:
 
 ## API
 
-### remark.use(gap, [options])
+### `remark.use(headingGap[, options])`
 
 ## Contributing
 ```
@@ -54,7 +54,7 @@ Now, running `node example` yields:
 
 ## API
 
-### remark.use(gap, [options])
+### `remark.use(headingGap[, options])`
 
 
 ## Contributing
