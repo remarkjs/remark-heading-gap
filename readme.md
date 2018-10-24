@@ -63,7 +63,7 @@ Now, running `node example` yields:
 
 ## API
 
-### `remark.use(headingGap)`
+### `remark.use(headingGap[, options])`
 
 remark-heading-gap ensures that automatically generated Markdown follows your
 own rules for newlines in between section headings.
