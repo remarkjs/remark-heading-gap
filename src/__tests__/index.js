@@ -11,6 +11,7 @@ const specs = directory(base).reduce((tests, contents) => {
   if (!tests[parts[0]]) {
     tests[parts[0]] = {}
   }
+
   tests[parts[0]][parts[1]] = file(join(base, contents), 'utf-8')
   return tests
 }, {})
