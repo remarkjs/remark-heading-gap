@@ -3,3 +3,13 @@ node_js:
   - lts/dubnium
   - node
 after_script: bash <(curl -s https://codecov.io/bash)
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: ie5TJJL5U9bzf5X9baB8RH7eGTCOdodbzQMPoidOP7fS/aeljVjVjUmAaHx0rH3FbatR66jiVrjDIyctWf4bLYNxp8+ty3JY4piZqqYhzedDpW5iYeEmh1bd4gsyNoI4NsaqVeXKa6TIJ8FcsWvEj8f+IqEpe/S8lqeUqjyBPgaJ0JPLM2sMLtbdSplaD9sbsqlhG+A/zoygrFvv9zQPtlSZAjGTzNsjBiK3HlQAMLBPftYRQTX89wO8EyvnftydWDwHDnvXd0SLTBDxtOXxLqS/LxTd3XEK1MZlbfi+ISMOHlwF0eOISW3YQWB5cpBzv5nPqqgV5SMUeWfsi56iyoZVJYYUmvr5iTTY7Pkmm1vvsAwhNchemub+momKRZU8DIL4ETPaTcTB0n8VmWrcSw4jAEgp7Biiuv5A+7G4Nuu+ylWBmkatuCOoeOolpwKY3+IJFKES6jnNFytBPqJX9d4sc4euUqXuHmCD0T4va/YIla6nkcp14/XisCnaqSrGIcknPabG4MJ0VJ0azlwpqVzL+AtcazOptaJ9ZIFNoJMBAdBDZ9pzxntKv59zC8KyNsH/EdCeaZjO5r51pvqObWlIL3exRHiH+wahzn4JGHHTUKwTPH7HwWB2wr8wxTNChBwl9q3tdKshzeukP3PqtIClKgVRIlkmlBJlPbmtkSM=
+  file:
+    - 'remark-heading-gap.js'
+    - 'remark-heading-gap.min.js'
+  on:
+    tags: true

@@ -1,2 +1,4 @@
-dist
-coverage
+coverage/
+dist/
+remark-heading-gap.js
+remark-heading-gap.min.js
