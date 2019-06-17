@@ -26,7 +26,7 @@
   "module": "src/index.js",
   "files": [
     "dist",
-    "src"
+    "src/index.js"
   ],
   "dependencies": {},
   "devDependencies": {
