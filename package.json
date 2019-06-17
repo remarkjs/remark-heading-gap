@@ -1,16 +1,19 @@
 {
   "name": "remark-heading-gap",
   "version": "3.1.0",
-  "description": "Adjust the gap between headings.",
+  "description": "remark plugin to adjust the gap between headings",
   "license": "MIT",
   "keywords": [
+    "unified",
+    "remark",
+    "plugin",
+    "mdast",
+    "markdown",
     "heading",
     "gap",
     "space",
     "newlines",
-    "whitespace",
-    "remark",
-    "markdown"
+    "whitespace"
   ],
   "repository": "remarkjs/remark-heading-gap",
   "bugs": "https://github.com/remarkjs/remark-heading-gap/issues",
