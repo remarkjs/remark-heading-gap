@@ -89,6 +89,13 @@ Note that both `before` and `after` accept a custom string so you can specify
 `\r\n` instead if you choose; or add other presentational markers.
 
 
+## Security
+
+Use of `remark-heading-gap` does not involve [**rehype**][rehype]
+([**hast**][hast]) or user content so there are no openings for
+[cross-site scripting (XSS)][xss] attacks.
+
+
 ## Contribute
 
 See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
@@ -147,3 +154,9 @@ abide by its terms.
 [author]: http://beneb.info
 
 [remark]: https://github.com/remarkjs/remark
+
+[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
+[rehype]: https://github.com/rehypejs/rehype
+
+[hast]: https://github.com/syntax-tree/hast
