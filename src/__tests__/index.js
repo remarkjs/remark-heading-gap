@@ -16,14 +16,11 @@ const specs = directory(base).reduce((tests, contents) => {
   return tests
 }, {})
 
-Object.keys(specs).forEach(name => {
+Object.keys(specs).forEach((name) => {
   const spec = specs[name]
-  test(name, t => {
+  test(name, (t) => {
     t.deepEqual(
-      remark()
-        .use(plugin)
-        .processSync(spec.fixture)
-        .toString(),
+      remark().use(plugin).processSync(spec.fixture).toString(),
       spec.expected
     )
   })
