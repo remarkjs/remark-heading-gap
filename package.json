@@ -1,6 +1,6 @@
 {
   "name": "remark-heading-gap",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "remark plugin to adjust the gap between headings",
   "license": "MIT",
   "keywords": [
