@@ -76,14 +76,14 @@ Now, running `node example` yields:
 Adjust the gap between headings.
 Ensures that automatically generated Markdown follows your own rules for blank
 lines between section headings.
-From personal experience, adding extra newlines helps to visualise breaks in
+From personal experience, adding extra newlines helps to visualize breaks in
 sections, especially when quickly scanning documentation.
 
 #### `options.{1, 2, 3, 4, 5, 6}`
 
 Pass a gap (Object, default: `{before: '\n', after: ''}` for `options.2`,
 `{before: '', after: ''}` for all others)
-Customise the gap that appears for up to 6 levels of heading; for example, pass
+Customize the gap that appears for up to 6 levels of heading; for example, pass
 `{1: {before: '\n', after: '\n'}}` to double the gap for the first heading.
 Note that both `before` and `after` accept a custom string so you can specify
 `\r\n` instead if you choose; or add other presentational markers.
@@ -102,8 +102,8 @@ See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
 to get started.
 See [`support.md`][support] for ways to get help.
 
-This project has a [Code of Conduct][coc].
-By interacting with this repository, organisation, or community you agree to
+This project has a [code of conduct][coc].
+By interacting with this repository, organization, or community you agree to
 abide by its terms.
 
 
@@ -135,7 +135,7 @@ abide by its terms.
 
 [collective]: https://opencollective.com/unified
 
-[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+[chat-badge]: https://img.shields.io/badge/chat-spectrum-7b16ff.svg
 
 [chat]: https://spectrum.chat/unified/remark
 
