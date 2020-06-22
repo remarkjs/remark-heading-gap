@@ -6,15 +6,16 @@ import plugin from '..'
 
 const base = join(__dirname, 'fixtures')
 
-const specs = directory(base).reduce((tests, contents) => {
+const specs = {}
+
+directory(base).forEach((contents) => {
   const parts = contents.split('.')
-  if (!tests[parts[0]]) {
-    tests[parts[0]] = {}
+  if (!specs[parts[0]]) {
+    specs[parts[0]] = {}
   }
 
-  tests[parts[0]][parts[1]] = file(join(base, contents), 'utf-8')
-  return tests
-}, {})
+  specs[parts[0]][parts[1]] = file(join(base, contents), 'utf-8')
+})
 
 Object.keys(specs).forEach((name) => {
   const spec = specs[name]
