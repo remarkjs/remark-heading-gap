@@ -6,7 +6,7 @@
 
 ## API
 
-### remark.use(wrap, [options])
+### remark.use(wrap, \[options])
 
 
 ## Contributing

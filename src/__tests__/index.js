@@ -19,9 +19,15 @@ directory(base).forEach((contents) => {
 
 Object.keys(specs).forEach((name) => {
   const spec = specs[name]
+  let options
+
+  if (name === 'three-zero') {
+    options = {3: {before: 0, after: 0}}
+  }
+
   test(name, (t) => {
     t.deepEqual(
-      remark().use(plugin).processSync(spec.fixture).toString(),
+      remark().use(plugin, options).processSync(spec.fixture).toString(),
       spec.expected
     )
   })

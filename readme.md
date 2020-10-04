@@ -10,6 +10,13 @@
 
 [**remark**][remark] plugin to adjust the gap between headings.
 
+## Important!
+
+This plugin is affected by the new parser in remark
+([`micromark`](https://github.com/micromark/micromark),
+see [`remarkjs/remark#536`](https://github.com/remarkjs/remark/pull/536)).
+Use version 3 while you’re still on remark 12.
+Use version 4 for remark 13+.
 
 ## Install
 
@@ -18,7 +25,6 @@
 ```sh
 npm install remark-heading-gap
 ```
-
 
 ## Use
 
@@ -68,7 +74,6 @@ Now, running `node example` yields:
 ## Contributing
 ```
 
-
 ## API
 
 ### `remark().use(headingGap[, options])`
@@ -81,20 +86,20 @@ sections, especially when quickly scanning documentation.
 
 #### `options.{1, 2, 3, 4, 5, 6}`
 
-Pass a gap (Object, default: `{before: '\n', after: ''}` for `options.2`,
-`{before: '', after: ''}` for all others)
+Pass a gap (Object, default: `{before: 2, after: 1}` for `options.2`,
+`{before: 1, after: 1}` for all others)
 Customize the gap that appears for up to 6 levels of heading; for example, pass
-`{1: {before: '\n', after: '\n'}}` to double the gap for the first heading.
-Note that both `before` and `after` accept a custom string so you can specify
-`\r\n` instead if you choose; or add other presentational markers.
-
+`{1: {before: 2, after: 2}}` to add two blank lines before and after the first
+heading.
+You can also set values to `0`, to not add a blank line.
+There are no blank lines added if a heading is the first or last child of the
+document, list item, or block quote.
 
 ## Security
 
 Use of `remark-heading-gap` does not involve [**rehype**][rehype]
 ([**hast**][hast]) or user content so there are no openings for
 [cross-site scripting (XSS)][xss] attacks.
-
 
 ## Contribute
 
@@ -105,7 +110,6 @@ See [`support.md`][support] for ways to get help.
 This project has a [code of conduct][coc].
 By interacting with this repository, organization, or community you agree to
 abide by its terms.
-
 
 ## License
 
