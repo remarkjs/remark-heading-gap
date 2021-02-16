@@ -117,9 +117,9 @@ abide by its terms.
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/remarkjs/remark-heading-gap.svg
+[build-badge]: https://github.com/remarkjs/remark-heading-gap/workflows/main/badge.svg
 
-[build]: https://travis-ci.org/remarkjs/remark-heading-gap
+[build]: https://github.com/remarkjs/remark-heading-gap/actions
 
 [coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark-heading-gap.svg
 
