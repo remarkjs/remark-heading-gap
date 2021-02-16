@@ -1,10 +1,10 @@
 import {readdirSync as directory, readFileSync as file} from 'fs'
-import {join} from 'path'
+import path from 'path'
 import test from 'ava'
 import remark from 'remark'
-import plugin from '..'
+import plugin from '../index.js'
 
-const base = join(__dirname, 'fixtures')
+const base = path.join(__dirname, 'fixtures')
 
 const specs = {}
 
@@ -14,7 +14,7 @@ directory(base).forEach((contents) => {
     specs[parts[0]] = {}
   }
 
-  specs[parts[0]][parts[1]] = file(join(base, contents), 'utf-8')
+  specs[parts[0]][parts[1]] = file(path.join(base, contents), 'utf-8')
 })
 
 Object.keys(specs).forEach((name) => {
