@@ -1,6 +1,3 @@
 coverage/
 dist/
-remark-heading-gap.js
-remark-heading-gap.min.js
-*.json
 *.md

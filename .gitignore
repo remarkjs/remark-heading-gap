@@ -4,6 +4,4 @@
 coverage/
 dist/
 node_modules/
-remark-heading-gap.js
-remark-heading-gap.min.js
 yarn.lock
