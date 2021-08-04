@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 import test from 'tape'
-import remark from 'remark'
-import plugin from '../index.js'
+import {remark} from 'remark'
+import remarkHeadingGap from '../index.js'
 
 const base = path.join('test', 'fixtures')
 
@@ -30,7 +30,10 @@ test('remark-heading-gap', (t) => {
     }
 
     t.deepEqual(
-      remark().use(plugin, options).processSync(spec.fixture).toString(),
+      remark()
+        .use(remarkHeadingGap, options)
+        .processSync(spec.fixture)
+        .toString(),
       spec.expected,
       name
     )
