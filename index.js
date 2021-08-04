@@ -2,12 +2,13 @@ let warningIssued
 
 const defaults = {2: {before: 2}}
 
-export default function (options) {
+export default function remarkHeadingGap(options) {
   const data = this.data()
   const gaps = {...defaults, ...options}
   const headingGap = {join: [betweenHeading]}
 
-  /* istanbul ignore next - old remark. */
+  // Old remark.
+  /* c8 ignore next 11 */
   if (
     !warningIssued &&
     this.Compiler &&
@@ -20,7 +21,8 @@ export default function (options) {
     )
   }
 
-  /* istanbul ignore next - other extensions */
+  // Other extensions
+  /* c8 ignore next */
   if (!data.toMarkdownExtensions) data.toMarkdownExtensions = []
 
   data.toMarkdownExtensions.push(headingGap)

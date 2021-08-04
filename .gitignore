@@ -1,6 +1,5 @@
+coverage/
+node_modules/
 .DS_Store
 *.log
-coverage/
-dist/
-node_modules/
 yarn.lock

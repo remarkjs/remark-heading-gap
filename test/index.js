@@ -1,10 +1,10 @@
-const fs = require('fs')
-const path = require('path')
-const test = require('tape')
-const remark = require('remark')
-const plugin = require('../dist/index.js')
+import fs from 'fs'
+import path from 'path'
+import test from 'tape'
+import remark from 'remark'
+import plugin from '../index.js'
 
-const base = path.join(__dirname, 'fixtures')
+const base = path.join('test', 'fixtures')
 
 const specs = {}
 
