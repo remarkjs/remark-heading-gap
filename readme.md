@@ -20,6 +20,9 @@ Use version 4 for remark 13+.
 
 ## Install
 
+This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
+Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
+
 [npm][]:
 
 ```sh
@@ -42,15 +45,15 @@ Say we have a Markdown file, `example.md`, that looks as follows:
 ## Contributing
 ```
 
-And our script, `example.js`, contains:
+And our module, `example.js`, contains:
 
 ```js
-const fs = require('fs')
-const remark = require('remark')
-const gap = require('remark-heading-gap')
+import fs from 'node:fs'
+import {remark} from 'remark'
+import remarkHeadingGap from 'remark-heading-gap'
 
 const result = remark()
-  .use(gap)
+  .use(remarkHeadingGap)
   .processSync(fs.readFileSync('example.md'))
   .toString()
 
@@ -68,7 +71,10 @@ Now, running `node example` yields:
 
 ## API
 
-### `remark.use(headingGap[, options])`
+This package exports no identifiers.
+The default export is `remarkHeadingGap`.
+
+### `unified().use(remarkHeadingGap[, options])`
 
 
 ## Contributing
