@@ -7,9 +7,6 @@
  * @typedef {Partial<Record<Depth, {before?: number, after?: number}>>} Options
  */
 
-/** @type {boolean|undefined} */
-let warningIssued
-
 /** @type {Options} */
 const defaults = {2: {before: 2}}
 
@@ -37,20 +34,6 @@ export default function remarkHeadingGap(options = {}) {
         }
       }
     ]
-  }
-
-  // Old remark.
-  /* c8 ignore next 11 */
-  if (
-    !warningIssued &&
-    this.Compiler &&
-    this.Compiler.prototype &&
-    this.Compiler.prototype.visitors
-  ) {
-    warningIssued = true
-    console.warn(
-      '[remark-heading-gap] Warning: please upgrade to remark 13 to use this plugin'
-    )
   }
 
   const extensions = /** @type {Extension[]} */ (
