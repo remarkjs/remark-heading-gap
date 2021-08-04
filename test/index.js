@@ -1,3 +1,7 @@
+/**
+ * @typedef {import('../index.js').Options} Options
+ */
+
 import fs from 'fs'
 import path from 'path'
 import test from 'tape'
@@ -6,10 +10,12 @@ import remarkHeadingGap from '../index.js'
 
 const base = path.join('test', 'fixtures')
 
+/** @type {Record<string, Record<string, string>>} */
 const specs = {}
 
 fs.readdirSync(base).forEach((contents) => {
   const parts = contents.split('.')
+
   if (!specs[parts[0]]) {
     specs[parts[0]] = {}
   }
@@ -23,6 +29,7 @@ fs.readdirSync(base).forEach((contents) => {
 test('remark-heading-gap', (t) => {
   Object.keys(specs).forEach((name) => {
     const spec = specs[name]
+    /** @type {Options|undefined} */
     let options
 
     if (name === 'three-zero') {
