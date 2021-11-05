@@ -12,6 +12,21 @@
 
 ## Contents
 
+*   [What is this?](#what-is-this)
+*   [When should I use this?](#when-should-i-use-this)
+*   [Install](#install)
+*   [Use](#use)
+*   [API](#api)
+    *   [`unified().use(remarkHeadingGap[, options])`](#unifieduseremarkheadinggap-options)
+*   [Examples](#examples)
+    *   [Example: blank lines around first/last headings](#example-blank-lines-around-firstlast-headings)
+*   [Types](#types)
+*   [Compatibility](#compatibility)
+*   [Security](#security)
+*   [Related](#related)
+*   [Contribute](#contribute)
+*   [License](#license)
+
 ## What is this?
 
 This package is a [unified][] ([remark][]) plugin that lets you change the gap
@@ -64,13 +79,9 @@ Say we have a markdown file `example.md` that looks as follows:
 
 ```markdown
 # remark-heading-gap
-
 ## Example
-
 ## API
-
 ### `unified().use(remarkHeadingGap[, options])`
-
 ## Contributing
 ```
 
@@ -120,7 +131,7 @@ adjust the gap between headings in markdown.
 
 ###### `options.{1, 2, 3, 4, 5, 6}`
 
-Define heading ranks to gaps (`Record<1 | 2 | 3 | 4 | 5 \ 6, Gap>`, default:
+Define heading ranks to gaps (`Record<1 | 2 | 3 | 4 | 5 | 6, Gap>`, default:
 `{2: {before: 2, after: 1}}`).
 `Gap` is defined as `{before?: number, after?: number}`.
 There are no blank lines added if a heading is the first or last child of the
@@ -135,7 +146,8 @@ You can also set values to `0` to not add blank lines.
 ### Example: blank lines around first/last headings
 
 This example shows that there are no blank lines added before the first and
-after the last heading in a container:
+after the last heading in a container.
+Assuming we had `example.md` from before and changed it to contain this:
 
 ```markdown
 # Alpha
@@ -146,7 +158,42 @@ Bravo charlie.
 >
 > Echo foxtrott.
 >
-> # Golf
+> ## Golf
+```
+
+Then configuring this plugin in `example.js` like so:
+
+```diff
+@@ -6,7 +6,10 @@ main()
+
+ async function main() {
+   const file = await remark()
+-    .use(remarkHeadingGap)
++    .use(remarkHeadingGap, {
++      1: {before: 3, after: 3},
++      2: {before: 2, after: 2}
++    })
+     .process(String(await read('example.md')))
+
+   console.log(String(file))
+```
+
+Then when running `node example.js` we’d get:
+
+```markdown
+# Alpha
+
+
+
+Bravo charlie.
+
+> ## Delta
+>
+>
+> Echo foxtrott.
+>
+>
+> ## Golf
 ```
 
 ## Types
@@ -174,8 +221,9 @@ attacks.
 
 ## Related
 
-*   [`remark-github`](#)
-    — link references to commits, issues, PRs, and users
+*   [`remarkjs/remark-normalize-headings`](https://github.com/remarkjs/remark-normalize-headings)
+    — make sure there is a single top level heading in a document by adjusting
+    heading ranks accordingly
 
 ## Contribute
 
