@@ -4,7 +4,8 @@
  * @typedef {Heading['depth']} Depth
  * @typedef {import('mdast-util-to-markdown').Options} Extension
  *
- * @typedef {Partial<Record<Depth, {before?: number, after?: number}>>} Options
+ * @typedef {{before?: number, after?: number}} Gap
+ * @typedef {Partial<Record<Depth, Gap>>} Options
  */
 
 /** @type {Options} */
