@@ -59,17 +59,17 @@ In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
 npm install remark-heading-gap
 ```
 
-In Deno with [Skypack][]:
+In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import remarkHeadingGap from 'https://cdn.skypack.dev/remark-heading-gap@5?dts'
+import remarkHeadingGap from 'https://esm.sh/remark-heading-gap@5'
 ```
 
-In browsers with [Skypack][]:
+In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import remarkHeadingGap from 'https://cdn.skypack.dev/remark-heading-gap@5?min'
+  import remarkHeadingGap from 'https://esm.sh/remark-heading-gap@5?bundle'
 </script>
 ```
 
@@ -269,7 +269,7 @@ abide by its terms.
 
 [npm]: https://docs.npmjs.com/cli/install
 
-[skypack]: https://www.skypack.dev
+[esmsh]: https://esm.sh
 
 [health]: https://github.com/remarkjs/.github
 
