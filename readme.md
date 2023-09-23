@@ -18,6 +18,8 @@
 *   [Use](#use)
 *   [API](#api)
     *   [`unified().use(remarkHeadingGap[, options])`](#unifieduseremarkheadinggap-options)
+    *   [`Gap`](#gap)
+    *   [`Options`](#options)
 *   [Examples](#examples)
     *   [Example: blank lines around first/last headings](#example-blank-lines-around-firstlast-headings)
 *   [Types](#types)
@@ -33,12 +35,6 @@ This package is a [unified][] ([remark][]) plugin that lets you change the gap
 (number of blank lines) between headings and surrounding text when formatting
 markdown.
 
-**unified** is a project that transforms content with abstract syntax trees
-(ASTs).
-**remark** adds support for markdown to unified.
-This is a remark plugin that configures the markdown serializer
-(`remark-stringify`).
-
 ## When should I use this?
 
 This project is useful when you want to adjust the gap around headings when
@@ -52,8 +48,8 @@ but a single blank line between blocks (headings, paragraphs, lists, code, etc).
 
 ## Install
 
-This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
-In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
+This package is [ESM only][esm].
+In Node.js (version 16+), install with [npm][]:
 
 ```sh
 npm install remark-heading-gap
@@ -75,71 +71,103 @@ In browsers with [`esm.sh`][esmsh]:
 
 ## Use
 
-Say we have a markdown file `example.md` that looks as follows:
+Say we have the following file `example.md`:
 
 ```markdown
-# remark-heading-gap
-## Example
-## API
-### `unified().use(remarkHeadingGap[, options])`
-## Contributing
+# Pluto
+
+## Contents
+
+## History
+
+### Discovery
+
+### Name and symbol
+
+### Planet X disproved
+
+## Orbit
 ```
 
-And our module `example.js` contains:
+…and a module `example.js`:
 
 ```js
-import {read} from 'to-vfile'
 import {remark} from 'remark'
 import remarkHeadingGap from 'remark-heading-gap'
+import {read} from 'to-vfile'
 
-main()
+const file = await remark()
+  .use(remarkHeadingGap)
+  .process(await read('example.md'))
 
-async function main() {
-  const file = await remark()
-    .use(remarkHeadingGap)
-    .process(await read('example.md'))
-
-  console.log(String(file))
-}
+console.log(String(file))
 ```
 
-Now running `node example.js` yields:
+…then running `node example.js` yields:
 
 ```markdown
-# remark-heading-gap
+# Pluto
 
 
-## Example
+## Contents
 
 
-## API
+## History
 
-### `unified().use(remarkHeadingGap[, options])`
+### Discovery
+
+### Name and symbol
+
+### Planet X disproved
 
 
-## Contributing
+## Orbit
 ```
 
 ## API
 
 This package exports no identifiers.
-The default export is `remarkHeadingGap`.
+The default export is [`remarkHeadingGap`][api-remark-heading-gap].
 
 ### `unified().use(remarkHeadingGap[, options])`
 
-adjust the gap between headings in markdown.
+Adjust the gap between headings.
 
-###### `options.{1, 2, 3, 4, 5, 6}`
-
-Define heading ranks to gaps (`Record<1 | 2 | 3 | 4 | 5 | 6, Gap>`, default:
-`{2: {before: 2, after: 1}}`).
-`Gap` is defined as `{before?: number, after?: number}`.
-There are no blank lines added if a heading is the first or last child of the
-document, list item, or block quote.
-
-For example, pass `{1: {before: 2, after: 2}}` to add two blank lines before and
-after the main heading.
+There are no blank lines added if a heading is the first or last child of
+the document, list item, or block quote.
+For example, pass `{1: {before: 2, after: 2}}` to add two blank lines before
+and after the main heading.
 You can also set values to `0` to not add blank lines.
+
+###### Parameters
+
+*   `options` ([`Options`][api-options], default: `{2: {before: 2}}`)
+    — configuration
+
+###### Returns
+
+Nothing (`undefined`).
+
+### `Gap`
+
+Gap between a heading (TypeScript type).
+
+###### Fields
+
+*   `after` (`number`, default: `1`)
+    — blank lines after heading
+*   `before` (`number`, default: `1`)
+    — blank lines before heading
+
+### `Options`
+
+Configuration (TypeScript type).
+
+###### Type
+
+```ts
+type Options = Partial<Record<1 | 2 | 3 | 4 | 5 | 6, Gap | null | undefined>>
+```
 
 ## Examples
 
@@ -164,18 +192,18 @@ Bravo charlie.
 Then configuring this plugin in `example.js` like so:
 
 ```diff
-@@ -6,7 +6,10 @@ main()
+@@ -3,7 +3,10 @@ import remarkHeadingGap from 'remark-heading-gap'
+ import {read} from 'to-vfile'
 
- async function main() {
-   const file = await remark()
--    .use(remarkHeadingGap)
-+    .use(remarkHeadingGap, {
-+      1: {before: 3, after: 3},
-+      2: {before: 2, after: 2}
-+    })
-     .process(String(await read('example.md')))
+ const file = await remark()
+-  .use(remarkHeadingGap)
++  .use(remarkHeadingGap, {
++    1: {after: 3, before: 3},
++    2: {after: 2, before: 2}
++  })
+   .process(await read('example.md'))
 
-   console.log(String(file))
+ console.log(String(file))
 ```
 
 Then when running `node example.js` we’d get:
@@ -199,15 +227,17 @@ Bravo charlie.
 ## Types
 
 This package is fully typed with [TypeScript][].
-It exports `Options` and `Gap` types, which specify the interfaces of the
-accepted options.
+It exports the additional types [`Gap`][api-gap] and [`Options`][api-options].
 
 ## Compatibility
 
-Projects maintained by the unified collective are compatible with all maintained
+Projects maintained by the unified collective are compatible with maintained
 versions of Node.js.
-As of now, that is Node.js 12.20+, 14.14+, and 16.0+.
-Our projects sometimes work with older versions, but this is not guaranteed.
+
+When we cut a new major release, we drop support for unmaintained versions of
+Node.
+This means we try to keep the current release line, `remark-heading-gap@^5`,
+compatible with Node.js 12.
 
 This plugin works with `remark-stringify` version 9+ (`remark` version 13+).
 Version 3 of this plugin worked with `remark-stringify` version 8- (`remark`
@@ -216,8 +246,8 @@ version 12-).
 ## Security
 
 Use of `remark-heading-gap` does not involve **[rehype][]** (**[hast][]**) or
-user content so there are no openings for [cross-site scripting (XSS)][xss]
-attacks.
+user content so there are no openings for [cross-site scripting
+(XSS)][wiki-xss] attacks.
 
 ## Related
 
@@ -253,9 +283,9 @@ abide by its terms.
 
 [downloads]: https://www.npmjs.com/package/remark-heading-gap
 
-[size-badge]: https://img.shields.io/bundlephobia/minzip/remark-heading-gap.svg
+[size-badge]: https://img.shields.io/bundlejs/size/remark-heading-gap
 
-[size]: https://bundlephobia.com/result?p=remark-heading-gap
+[size]: https://bundlejs.com/?q=remark-heading-gap
 
 [sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
 
@@ -269,28 +299,36 @@ abide by its terms.
 
 [npm]: https://docs.npmjs.com/cli/install
 
+[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
 [esmsh]: https://esm.sh
 
 [health]: https://github.com/remarkjs/.github
 
-[contributing]: https://github.com/remarkjs/.github/blob/HEAD/contributing.md
+[contributing]: https://github.com/remarkjs/.github/blob/main/contributing.md
 
-[support]: https://github.com/remarkjs/.github/blob/HEAD/support.md
+[support]: https://github.com/remarkjs/.github/blob/main/support.md
 
-[coc]: https://github.com/remarkjs/.github/blob/HEAD/code-of-conduct.md
+[coc]: https://github.com/remarkjs/.github/blob/main/code-of-conduct.md
 
 [license]: license
 
 [author]: http://beneb.info
 
-[remark]: https://github.com/remarkjs/remark
-
-[unified]: https://github.com/unifiedjs/unified
-
-[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
-
-[typescript]: https://www.typescriptlang.org
+[hast]: https://github.com/syntax-tree/hast
 
 [rehype]: https://github.com/rehypejs/rehype
 
-[hast]: https://github.com/syntax-tree/hast
+[remark]: https://github.com/remarkjs/remark
+
+[typescript]: https://www.typescriptlang.org
+
+[unified]: https://github.com/unifiedjs/unified
+
+[wiki-xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
+[api-gap]: #gap
+
+[api-options]: #options
+
+[api-remark-heading-gap]: #unifieduseremarkheadinggap-options
