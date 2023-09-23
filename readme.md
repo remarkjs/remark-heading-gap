@@ -58,14 +58,14 @@ npm install remark-heading-gap
 In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import remarkHeadingGap from 'https://esm.sh/remark-heading-gap@5'
+import remarkHeadingGap from 'https://esm.sh/remark-heading-gap@6'
 ```
 
 In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import remarkHeadingGap from 'https://esm.sh/remark-heading-gap@5?bundle'
+  import remarkHeadingGap from 'https://esm.sh/remark-heading-gap@6?bundle'
 </script>
 ```
 
