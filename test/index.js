@@ -25,10 +25,7 @@ while (++index < files.length) {
     specs[parts[0]] = {}
   }
 
-  specs[parts[0]][parts[1]] = fs.readFileSync(
-    path.join(base, contents),
-    'utf-8'
-  )
+  specs[parts[0]][parts[1]] = fs.readFileSync(path.join(base, contents), 'utf8')
 }
 
 test('remark-heading-gap', (t) => {

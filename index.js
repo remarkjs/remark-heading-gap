@@ -40,9 +40,7 @@ export default function remarkHeadingGap(options = {}) {
   const extensions = /** @type {Extension[]} */ (
     // Other extensions
     /* c8 ignore next 2 */
-    data.toMarkdownExtensions
-      ? data.toMarkdownExtensions
-      : (data.toMarkdownExtensions = [])
+    data.toMarkdownExtensions || (data.toMarkdownExtensions = [])
   )
 
   extensions.push(headingGap)
