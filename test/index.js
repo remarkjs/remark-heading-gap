@@ -2,57 +2,61 @@
  * @typedef {import('../index.js').Options} Options
  */
 
-import fs from 'node:fs'
-import path from 'node:path'
-import test from 'tape'
+import assert from 'node:assert/strict'
+import fs from 'node:fs/promises'
+import process from 'node:process'
+import test from 'node:test'
 import {remark} from 'remark'
 import remarkHeadingGap from '../index.js'
 
-const own = {}.hasOwnProperty
+test('remarkHeadingGap', async function (t) {
+  await t.test('should expose the public api', async function () {
+    assert.deepEqual(Object.keys(await import('../index.js')).sort(), [
+      'default'
+    ])
+  })
+})
 
-const base = path.join('test', 'fixtures')
+test('fixtures', async function (t) {
+  const base = new URL('fixtures/', import.meta.url)
+  const folders = await fs.readdir(base)
 
-/** @type {Record<string, Record<string, string>>} */
-const specs = {}
-const files = fs.readdirSync(base)
-let index = -1
+  let index = -1
 
-while (++index < files.length) {
-  const contents = files[index]
-  const parts = contents.split('.')
+  while (++index < folders.length) {
+    const folder = folders[index]
 
-  if (!specs[parts[0]]) {
-    specs[parts[0]] = {}
-  }
+    if (folder.startsWith('.')) continue
 
-  specs[parts[0]][parts[1]] = fs.readFileSync(path.join(base, contents), 'utf8')
-}
+    await t.test(folder, async function () {
+      const folderUrl = new URL(folder + '/', base)
+      const inputUrl = new URL('input.md', folderUrl)
+      const outputUrl = new URL('output.md', folderUrl)
+      const input = String(await fs.readFile(inputUrl))
+      /** @type {Options | undefined} */
+      const config =
+        folder === 'three-zero' ? {3: {before: 0, after: 0}} : undefined
 
-test('remark-heading-gap', (t) => {
-  /** @type {string} */
-  let name
+      const actual = String(
+        // @ts-expect-error: to do.
+        await remark().use(remarkHeadingGap, config).process(input)
+      )
 
-  for (name in specs) {
-    if (own.call(specs, name)) {
-      const spec = specs[name]
-      /** @type {Options|undefined} */
-      let options
+      /** @type {string} */
+      let output
 
-      if (name === 'three-zero') {
-        options = {3: {before: 0, after: 0}}
+      try {
+        if ('UPDATE' in process.env) {
+          throw new Error('Updating…')
+        }
+
+        output = String(await fs.readFile(outputUrl))
+      } catch {
+        output = actual
+        await fs.writeFile(outputUrl, actual)
       }
 
-      t.deepEqual(
-        remark()
-          // @ts-expect-error: hush.
-          .use(remarkHeadingGap, options)
-          .processSync(spec.fixture)
-          .toString(),
-        spec.expected,
-        name
-      )
-    }
+      assert.equal(actual, String(output))
+    })
   }
-
-  t.end()
 })
