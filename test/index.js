@@ -38,7 +38,6 @@ test('fixtures', async function (t) {
         folder === 'three-zero' ? {3: {before: 0, after: 0}} : undefined
 
       const actual = String(
-        // @ts-expect-error: to do.
         await remark().use(remarkHeadingGap, config).process(input)
       )
 

@@ -38,7 +38,6 @@
   ],
   "dependencies": {
     "@types/mdast": "^4.0.0",
-    "mdast-util-to-markdown": "^2.0.0",
     "unified": "^11.0.0"
   },
   "devDependencies": {
@@ -48,6 +47,7 @@
     "remark": "^15.0.0",
     "remark-cli": "^11.0.0",
     "remark-preset-wooorm": "^9.0.0",
+    "remark-stringify": "^11.0.0",
     "type-coverage": "^2.0.0",
     "typescript": "^5.0.0",
     "xo": "^0.56.0"
