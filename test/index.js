@@ -44,6 +44,7 @@ test('remark-heading-gap', (t) => {
 
       t.deepEqual(
         remark()
+          // @ts-expect-error: hush.
           .use(remarkHeadingGap, options)
           .processSync(spec.fixture)
           .toString(),
